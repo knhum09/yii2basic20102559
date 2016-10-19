@@ -35,7 +35,7 @@ AppAsset::register($this);
                     'class' => 'navbar-inverse',
                 ],
             ]);
-            $report = [['label' => 'รายงาน1', 'url' => ['/site/report1']],
+            $report = [['label' => 'รายงาน1', 'url' => ['/first1/index']],
                 ['label' => 'รายงาน2', 'url' => ['/site/report2']]
             ];
             $setting = [['label' => 'ผู้ใช้งาน', 'url' => ['/site/setting1']],
