@@ -35,19 +35,23 @@ AppAsset::register($this);
                     'class' => 'navbar-inverse',
                 ],
             ]);
+            $regiter = [['label' => 'ลงทะเบียนครุภัณฑ์', 'url' => ['/comtype/create']],
+            ];
             $report = [['label' => 'รายงาน1', 'url' => ['/first1/index']],
-                ['label' => 'รายงาน2', 'url' => ['/site/report2']]
+                ['label' => 'รายงานแสดงรายละเอียดคอม', 'url' => ['/com/selectdata', 'tid' => '']],
+                ['label' => 'รายงานแสดงประเภทคอม', 'url' => ['/reportcomtype/']],
+                ['label' => 'รายงานปัญหาคอมพิวเตอร์', 'url' => ['/reportcomsevice/']],
+                ['label' => 'กราฟรายงานจำนวนคอมพิวเตอร์', 'url' => ['/chat/']]
             ];
             $setting = [['label' => 'สถานะคอมฯ', 'url' => ['/comstatus/index']],
-                ['label' => 'กลุ่มผู้ใช้งาน', 'url' => ['/site/setting2']]
+                ['label' => 'ประเภทคอมฯ', 'url' => ['/comtype/']]
             ];
             echo Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-right'],
                 'encodeLabels' => false,
                 'items' => [
                     ['label' => '<span class="glyphicon glyphicon-home"></span> หน้าแรก', 'url' => ['/site/index']],
-                    ['label' => '<span class="glyphicon glyphicon-indent-right"></span> เกี่ยวกับ', 'url' => ['/site/about']],
-                    ['label' => '<span class="glyphicon glyphicon-earphone"></span> ติดต่อ', 'url' => ['/site/contact']],
+                    ['label' => '<span class="glyphicon glyphicon-pencil"></span> ลงทะเบียน', 'items' => $regiter],
                     ['label' => '<span class="glyphicon glyphicon-list-alt"></span> ระบบรายงาน', 'items' => $report],
                     ['label' => '<span class="glyphicon glyphicon-cog"></span> ตั้งค่าระบบ', 'items' => $setting],
                     Yii::$app->user->isGuest ? (
@@ -67,11 +71,11 @@ AppAsset::register($this);
             ?>
 
             <div class="container">
-<?=
-Breadcrumbs::widget([
-    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-])
-?>
+                <?=
+                Breadcrumbs::widget([
+                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                ])
+                ?>
                 <?= $content ?>
             </div>
         </div>
